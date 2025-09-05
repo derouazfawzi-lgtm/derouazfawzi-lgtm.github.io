@@ -1,0 +1,27 @@
+# Nom de votre automatisation
+name: Optimiser les Images du Projet
+
+# Déclencheur : se lance à chaque fois que vous ajoutez des fichiers
+on:
+  push:
+    branches:
+      - main  # ou 'master' si c'est le nom de votre branche principale
+
+jobs:
+  build:
+    name: Compression des images
+    # Le robot utilisera une machine virtuelle pour faire le travail
+    runs-on: ubuntu-latest
+    steps:
+      # Étape 1 : Le robot récupère une copie de votre projet
+      - name: Checkout du code
+        uses: actions/checkout@v2
+
+      # Étape 2 : Le robot utilise une action pré-faite 
+      # pour compresser toutes les images.
+      - name: Compression des Images
+        uses: calibreapp/image-actions@main
+        with:
+          # Cette ligne est nécessaire pour autoriser le robot à 
+          # sauvegarder les modifications dans votre projet.
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
