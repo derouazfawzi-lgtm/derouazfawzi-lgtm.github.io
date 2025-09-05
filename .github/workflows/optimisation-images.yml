@@ -24,4 +24,4 @@ jobs:
         with:
           # Cette ligne est nécessaire pour autoriser le robot à 
           # sauvegarder les modifications dans votre projet.
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
